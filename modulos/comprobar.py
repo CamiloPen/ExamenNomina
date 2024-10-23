@@ -7,9 +7,24 @@ def buscar(doc):
         if empleado["doc"] == doc:
             return empleado
         i += 1
+
+def negativo(num):
+    if num < 1:
+        print(" Dato incorrecto")
+        return True
+    else:
+        return False
     
-
-
+def dias(dia, empleado):
+    if dia > 0 and dia < 30:
+        if dia in empleado["inas"]:
+            print(" Ya ingreso esa inasistencia")
+            return False
+        else:
+            return True
+    else:
+        print(" Digite un dia valido")
+        return False
 
 def pago():
     for empleado in empleados:
