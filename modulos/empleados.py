@@ -1,5 +1,5 @@
 from .comprobar import *
-from .jsonNomina import empleados
+from .jsonNomina import *
 
 def registrar():
     empleado = {}
@@ -16,7 +16,7 @@ def registrar():
             empleado["car"] = input()
             empleado["inas"] = []
             empleado["bonos"] = []
-            sal = int(input(" Por favor digite el salario del empleado"))
+            sal = int(input(" Por favor digite el salario del empleado -> "))
             if not(negativo(sal)):
                 empleado["sal"] = sal
                 empleados.append(empleado)
@@ -55,3 +55,10 @@ def bonos():
                     seguir = input(" Si desea segur agregando bonos precione (s) ").lower()
                     if seguir != "s":
                         break
+
+def verNomina():
+    print("DOCUMENTO -- NOMBRE -- CARGO -- SALARIO-BASE -- DESCUENTO-SALUD -- DESCUENTO-PENSION -- INASISTENCIAS -- BONOS -- TOTAL")
+    for empleado in empleados:
+        pago(empleado)
+        generarNomina(empleado)
+        print(empleado["doc"]," -- ",empleado["nom"]," -- ",empleado["car"]," -- ",empleado["sal"]," -- ",empleado["sal"]*0.04," -- ",empleado["sal"]*0.04," -- ",len(empleado["inas"]), " -- ", empleado["bonos"], " -- ", empleado["total"])

@@ -22,8 +22,7 @@ while True:
                 bonos()
             case 4:
                 print("GENERAR NOMINA")
-                pago()
-                generarNomina()
+                verNomina()
             case 5:
                 break
         guardar()

@@ -25,26 +25,25 @@ def guardar():
     file.write(new)                     
     file.close()
     
-def generarNomina():
-    for empleado in empleados:
-        file = f"nomina/{empleado["doc"]}.csv"
-        headers = ["DOCUMENTO", "NOMBRE", "CARGO", 
-                   "SALARIO-BASE", "DESCUENTO-SALUD", 
-                   "DESCUENTO-PENSION", "INASISTENCIAS", 
-                   "BONOS", "TOTAL"]
-        with open(file,"w", newline='') as f2:                                                    
-            writer = DictWriter(f2,  fieldnames = headers )                                            
-            if headers:                                                                               
-                writer.writeheader()                                                                                                                   
-                writer.writerow({
-                    "DOCUMENTO": empleado["doc"], 
-                    "NOMBRE": empleado["nom"], 
-                    "CARGO": empleado["car"], 
-                    "SALARIO-BASE": empleado["sal"], 
-                    "DESCUENTO-SALUD": empleado["sal"]*0.04,
-                    "DESCUENTO-PENSION": empleado["sal"]*0.04,
-                    "INASISTENCIAS": len(empleado["inas"]), 
-                    "BONOS": empleado["bonos"], 
-                    "TOTAL": empleado["total"]
-                })                                                                  
-            f2.close()     
+def generarNomina(empleado):
+    file = f"nomina/{empleado["doc"]}.csv"
+    headers = ["DOCUMENTO", "NOMBRE", "CARGO", 
+                "SALARIO-BASE", "DESCUENTO-SALUD", 
+                "DESCUENTO-PENSION", "INASISTENCIAS", 
+                "BONOS", "TOTAL"]
+    with open(file,"w", newline='') as f2:                                                    
+        writer = DictWriter(f2,  fieldnames = headers )                                            
+        if headers:                                                                               
+            writer.writeheader()                                                                                                                   
+            writer.writerow({
+                "DOCUMENTO": empleado["doc"], 
+                "NOMBRE": empleado["nom"], 
+                "CARGO": empleado["car"], 
+                "SALARIO-BASE": empleado["sal"], 
+                "DESCUENTO-SALUD": empleado["sal"]*0.04,
+                "DESCUENTO-PENSION": empleado["sal"]*0.04,
+                "INASISTENCIAS": len(empleado["inas"]), 
+                "BONOS": empleado["bonos"], 
+                "TOTAL": empleado["total"]
+            })                                                                  
+        f2.close()     
